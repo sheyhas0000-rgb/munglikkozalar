@@ -1,7 +1,18 @@
 import React from 'react';
-import { Home, Rocket, Target, BookOpen, Skull, Image as ImageIcon, Crown, Swords, Printer, BookMarked, Eye, EyeOff, Sparkles } from 'lucide-react';
+import { Home, Rocket, Target, BookOpen, Skull, Image as ImageIcon, Crown, Swords, Printer, BookMarked, Eye, EyeOff, Sparkles, Grid3X3, Camera } from 'lucide-react';
 
-export type TabType = 'home' | 'challenge' | 'questions50' | 'hardest10' | 'mysteryImages' | 'finalBoss' | 'arena' | 'lore' | 'print';
+export type TabType = 
+  | 'home' 
+  | 'challenge' 
+  | 'crossword' 
+  | 'photoGallery' 
+  | 'mysteryImages' 
+  | 'arena' 
+  | 'questions50' 
+  | 'hardest10' 
+  | 'finalBoss' 
+  | 'lore' 
+  | 'print';
 
 interface HeaderProps {
   activeTab: TabType;
@@ -16,11 +27,13 @@ export const Header: React.FC<HeaderProps> = ({
   judgeMode,
   setJudgeMode
 }) => {
-  const navItems: { id: TabType; label: string; icon: React.ReactNode; count?: number }[] = [
+  const navItems: { id: TabType; label: string; icon: React.ReactNode; count?: number; highlight?: boolean }[] = [
     { id: 'home', label: 'Bosh Sahifa', icon: <Home className="w-3.5 h-3.5" /> },
-    { id: 'challenge', label: 'Challenge', icon: <Rocket className="w-3.5 h-3.5 text-amber-400" /> },
-    { id: 'arena', label: 'Musobaqa Arenasi', icon: <Target className="w-3.5 h-3.5 text-cyan-400" /> },
+    { id: 'crossword', label: 'Krossvord', icon: <Grid3X3 className="w-3.5 h-3.5 text-cyan-400" />, highlight: true },
+    { id: 'photoGallery', label: 'Fotogalereya', icon: <Camera className="w-3.5 h-3.5 text-amber-400" />, count: 16 },
+    { id: 'challenge', label: 'Solo Test', icon: <Rocket className="w-3.5 h-3.5 text-emerald-400" /> },
     { id: 'mysteryImages', label: 'Sirli Rasmlar', icon: <ImageIcon className="w-3.5 h-3.5 text-cyan-300" />, count: 30 },
+    { id: 'arena', label: 'Musobaqa Arenasi', icon: <Target className="w-3.5 h-3.5 text-indigo-400" /> },
     { id: 'questions50', label: '50 Qiyin Savol', icon: <BookOpen className="w-3.5 h-3.5" />, count: 50 },
     { id: 'hardest10', label: '10 Eng Qiyin', icon: <Skull className="w-3.5 h-3.5 text-rose-400" />, count: 10 },
     { id: 'finalBoss', label: 'Final Boss', icon: <Crown className="w-3.5 h-3.5 text-amber-300" />, count: 5 },
@@ -80,7 +93,9 @@ export const Header: React.FC<HeaderProps> = ({
                 onClick={() => setActiveTab(item.id)}
                 className={`flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-lg transition-all whitespace-nowrap cursor-pointer ${
                   isActive
-                    ? 'bg-white/[0.1] text-white border border-white/[0.14] shadow-sm font-semibold'
+                    ? 'bg-white/[0.12] text-white border border-white/[0.16] shadow-sm font-semibold'
+                    : item.highlight
+                    ? 'bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 hover:bg-cyan-500/20'
                     : 'text-slate-400 hover:text-slate-200 hover:bg-white/[0.04]'
                 }`}
               >
