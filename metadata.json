@@ -1,0 +1,6 @@
+{
+  "name": "Mungli Ko'zlar - Adabiy Musobaqa va Viktorina Markazi",
+  "description": "Hudoyberdi To'xtaboyevning 'Mungli ko'zlar' romani bo'yicha 50 ta qiyin savol, 10 ta o'ta noyob savol, 30 ta sirli rasm promptlari va musobaqa arenasi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
